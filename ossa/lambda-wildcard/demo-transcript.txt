@@ -1,0 +1,28 @@
+note : don't forget to add aws secret key to providers.tf
+
+first let's set up the Route 53 hosted zone
+1- to deploy the hosted zone 
+	- cd DNS Zone
+	- terraform init
+	- terraform plan	
+	- terraform apply
+- once the apply completes you'll have 2 outputs : 
+nameservers : to declare in namecheap
+zone_id : dns hosted zone id for the next step.
+
+once complete 
+	- copy nameservers and past them into namecheap 
+	- don't forget to add the "." at the end of the nameserver
+
+- step 2 : 
+	- create the lambda function with dns record
+	- type cd ..
+	- then get the zone id output from the first step and past it in var.tf zone_id variable
+	- after you copy the id then you can : 
+		- terraform init
+		- terraform plan 
+		- terraform apply
+	- once this apply is complete you'll get the domain name of your lambda as an output
+
+let's check
+it works ~~
